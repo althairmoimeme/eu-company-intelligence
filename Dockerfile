@@ -14,7 +14,7 @@ COPY frontend/ ./frontend/
 COPY run.py .
 
 # Install Python deps
-RUN pip install --no-cache-dir -e "."
+RUN pip install --no-cache-dir --upgrade setuptools && pip install --no-cache-dir "."
 
 # DB lives in /data volume — create empty placeholder if not mounted
 RUN mkdir -p /data
