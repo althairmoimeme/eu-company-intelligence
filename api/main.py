@@ -7,7 +7,7 @@ from fastapi.responses import FileResponse
 import os
 
 from .settings import get_settings
-from .routers import companies, scrape, signals
+from .routers import companies, signals
 from .routers.favorites import router as favorites_router
 from .routers.founder import router as founder_router
 from .routers.dashboard import router as dashboard_router
@@ -39,7 +39,6 @@ app.add_middleware(
 )
 
 app.include_router(companies.router, prefix="/api/v1", dependencies=[Depends(require_auth)])
-app.include_router(scrape.router, prefix="/api/v1", dependencies=[Depends(require_auth)])
 app.include_router(signals.router, prefix="/api/v1", dependencies=[Depends(require_auth)])
 app.include_router(favorites_router, prefix="/api/v1", dependencies=[Depends(require_auth)])
 app.include_router(founder_router, prefix="/api/v1", dependencies=[Depends(require_auth)])
