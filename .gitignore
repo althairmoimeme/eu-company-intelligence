@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.DS_Store
+companies.db
+companies.db-shm
+companies.db-wal
+eu_companies.db
+checkpoints/
+*.log
+streamlit_app/
