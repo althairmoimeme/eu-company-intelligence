@@ -8,22 +8,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install Python deps
 COPY pyproject.toml .
-RUN pip install --no-cache-dir -e ".[all]" 2>/dev/null || pip install --no-cache-dir \
-    "fastapi>=0.111" \
-    "uvicorn[standard]>=0.29" \
-    "sqlalchemy>=2.0" \
-    "aiosqlite>=0.20" \
-    "httpx>=0.27" \
-    "tenacity>=8.2" \
-    "pydantic-settings>=2.0" \
-    "python-dotenv>=1.0" \
-    "aiolimiter>=1.1" \
-    "click>=8.1" \
-    "rich>=13.0" \
-    "rapidfuzz>=3.0" \
-    "anthropic>=0.40" \
-    "reportlab>=4.0" \
-    "fpdf2>=2.7"
+RUN pip install --no-cache-dir -e "."
 
 # Copy source
 COPY api/ ./api/
