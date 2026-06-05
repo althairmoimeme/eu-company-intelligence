@@ -6,15 +6,15 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc g++ && rm -rf /var/lib/apt/lists/*
 
-# Install Python deps
-COPY pyproject.toml .
-RUN pip install --no-cache-dir -e "."
-
 # Copy source
+COPY pyproject.toml .
 COPY api/ ./api/
 COPY scraper/ ./scraper/
 COPY frontend/ ./frontend/
 COPY run.py .
+
+# Install Python deps
+RUN pip install --no-cache-dir -e "."
 
 # DB lives in /data volume — create empty placeholder if not mounted
 RUN mkdir -p /data
